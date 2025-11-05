@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FOR 8 - MERCURY ONLY!!!</title>
+  <style>
+  	* {
+  box-sizing: border-box;
+  font-family: monospace;
+  color: white;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #111 0%, #000 80%);
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 60px;
+  color: #00e0ff;
+  text-shadow: 0 0 15px #00e0ff;
+}
+
+h2 {
+  color: #b8d9ff;
+  text-shadow: 0 0 8px #0066ff;
+}
+
+section {
+  margin-top: 40px;
+}
+
+.announcements li {
+  list-style: none;
+  background: #222;
+  margin: 10px auto;
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: fit-content;
+  box-shadow: 0 0 10px rgba(0, 200, 255, 0.3);
+}
+
+.folder-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.folder {
+  width: 160px;
+  height: 120px;
+  cursor: pointer;
+  position: relative;
+  perspective: 1000px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.folder:hover {
+  transform: translateY(-8px) scale(1.05);
+}
+
+.folder-body {
+  background: linear-gradient(135deg, #008cff, #00ccff);
+  width: 100%;
+  height: 85%;
+  position: absolute;
+  bottom: 0;
+  border-radius: 5px 15px 15px 15px;
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.4);
+  transition: all 0.4s ease;
+}
+
+.folder-tab {
+  background: linear-gradient(135deg, #009dff, #00d5ff);
+  width: 40%;
+  height: 25%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 5px 5px 0 0;
+  z-index: 1;
+}
+
+.folder.open .folder-body {
+  transform: rotateX(5deg) scale(1.1);
+  background: linear-gradient(135deg, #33ccff, #99ffff);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+}
+
+.folder-name {
+  position: absolute;
+  bottom: -25px;
+  width: 100%;
+  font-weight: bold;
+  font-size: 1em;
+  text-shadow: 0 0 5px cyan;
+}
+
+.textdesc {
+  background: rgba(50, 60, 90, 0.8);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 80%;
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.3);
+}
+
+b {
+  display: block;
+  font-size: 1.3em;
+  background: none;
+  color: #00ffff;
+  text-shadow: 0 0 8px #00b3ff;
+  margin-bottom: 10px;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+.countdown {
+  margin-top: 40px;
+}
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome!</h1>
+  </header>
+
+  <section class="announcements">
+    <h2>Announcements - Last Updated: 11/05</h2>
+    <li>Math Assignment: Draw the cartesian plane measured 10x10</li>
+    <li>Values Education: Roleplay Tomorrow</li>
+    <li>MAPEH: Presentation/Discussion Tomorrow</li>
+  </section>
+
+  <section class="reviewers">
+    <h2>Reviewers</h2>
+    <div class="folder-container">
+    	
+      <div class="folder" data-file-path="https://drive.google.com/drive/folders/1SBk9V5nsCbDu5BuKr4hb8ELjw3FjcqDH?usp=sharing">
+        <div class="folder-tab"></div>
+        <div class="folder-body"></div>
+        <div class="folder-name">AP Quarter 1 and 2</div>
+      </div>
+     </div>
+
+    </div>
+  </section>
+
+  <section class="admin-note">
+    <div class="textdesc">
+      <b>Admin's Note</b>
+      <p>Hello everyone! We will bring this back temporarily for the midyear exam takers.</p>
+      <p></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Do not distribute any content from this website. Content is ONLY ACCESSIBLE HERE.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const folders = document.querySelectorAll('.folder');
+      folders.forEach(folder => {
+        const filePath = folder.getAttribute('data-file-path');
+        folder.addEventListener('click', () => {
+          folders.forEach(f => f.classList.remove('open'));
+          folder.classList.add('open');
+          setTimeout(() => {
+            if (filePath) window.open(filePath, '_blank');
+          }, 200);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
